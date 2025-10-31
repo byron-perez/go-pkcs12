@@ -520,7 +520,7 @@ func DecodeTrustStore(pfxData []byte, password string) (certs []*x509.Certificat
 	return
 }
 
-func getSafeContents(p12Data, password []byte, expectedItemsMin int, expectedItemsMax int) (bags []safeBag, updatedPassword []byte, err error) {
+func GetSafeContents(p12Data, password []byte, expectedItemsMin int, expectedItemsMax int) (bags []safeBag, updatedPassword []byte, err error) {
 	pfx := new(pfxPdu)
 	if err := unmarshal(p12Data, pfx); err != nil {
 		return nil, nil, errors.New("pkcs12: error reading P12 data: " + err.Error())
