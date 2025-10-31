@@ -15,7 +15,7 @@
 // This package is forked from golang.org/x/crypto/pkcs12, which is frozen.
 // The implementation is distilled from https://tools.ietf.org/html/rfc7292
 // and referenced documents.
-package pkcs12 // import "software.sslmate.com/src/go-pkcs12"
+package pkcs12 // import "github.com/byron-perez/go-pkcs12"
 
 import (
 	"crypto/ecdsa"
@@ -293,7 +293,7 @@ func ToPEM(pfxData []byte, password string) ([]*pem.Block, error) {
 		return nil, ErrIncorrectPassword
 	}
 
-	bags, encodedPassword, err := getSafeContents(pfxData, encodedPassword, 2, 2)
+	bags, encodedPassword, err := GetSafeContents(pfxData, encodedPassword, 2, 2)
 
 	if err != nil {
 		return nil, err
@@ -416,7 +416,7 @@ func DecodeChain(pfxData []byte, password string) (privateKey interface{}, certi
 		return nil, nil, nil, err
 	}
 
-	bags, encodedPassword, err := getSafeContents(pfxData, encodedPassword, 1, 2)
+	bags, encodedPassword, err := GetSafeContents(pfxData, encodedPassword, 1, 2)
 	if err != nil {
 		return nil, nil, nil, err
 	}
@@ -485,7 +485,7 @@ func DecodeTrustStore(pfxData []byte, password string) (certs []*x509.Certificat
 		return nil, err
 	}
 
-	bags, encodedPassword, err := getSafeContents(pfxData, encodedPassword, 1, 1)
+	bags, encodedPassword, err := GetSafeContents(pfxData, encodedPassword, 1, 1)
 	if err != nil {
 		return nil, err
 	}

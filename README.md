@@ -1,8 +1,8 @@
 # package pkcs12
 
-[![Documentation](https://pkg.go.dev/badge/software.sslmate.com/src/go-pkcs12)](https://pkg.go.dev/software.sslmate.com/src/go-pkcs12)
+[![Documentation](https://pkg.go.dev/badge/github.com/byron-perez/go-pkcs12)](https://pkg.go.dev/github.com/byron-perez/go-pkcs12)
 
-    import "software.sslmate.com/src/go-pkcs12" 
+    import "github.com/byron-perez/go-pkcs12" 
 
 Package pkcs12 implements some of PKCS#12 (also known as P12 or PFX).
 It is intended for decoding DER-encoded P12/PFX files for use with the `crypto/tls`
@@ -22,7 +22,7 @@ and referenced documents.
 Note that although the source code and issue tracker for this package are hosted
 on GitHub, the import path is:
 
-    software.sslmate.com/src/go-pkcs12 
+    github.com/byron-perez/go-pkcs12 
 
 Please be sure to use this path when you `go get` and `import` this package.
 

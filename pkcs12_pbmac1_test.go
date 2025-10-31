@@ -29,9 +29,9 @@ func TestDecodePKCS12DataOk(t *testing.T) {
 		t.Fatalf("Failed to encode password to BMP string: %v", err)
 	}
 
-	safeContents, updatedPassword, err := getSafeContents(pfxData, encodedPassword, 1, 10)
+	safeContents, updatedPassword, err := GetSafeContents(pfxData, encodedPassword, 1, 10)
 	if err != nil {
-		t.Fatalf("Failed to load PKCS#12 data with getSafeContents: %v", err)
+		t.Fatalf("Failed to load PKCS#12 data with GetSafeContents: %v", err)
 	}
 
 	if len(safeContents) == 0 {
@@ -56,9 +56,9 @@ func TestDecodePKCS12DataSha256Sha512(t *testing.T) {
 		t.Fatalf("Failed to encode password to BMP string: %v", err)
 	}
 
-	safeContents, updatedPassword, err := getSafeContents(pfxData, encodedPassword, 1, 10)
+	safeContents, updatedPassword, err := GetSafeContents(pfxData, encodedPassword, 1, 10)
 	if err != nil {
-		t.Fatalf("Failed to load PKCS#12 data with getSafeContents: %v", err)
+		t.Fatalf("Failed to load PKCS#12 data with GetSafeContents: %v", err)
 	}
 
 	if len(safeContents) == 0 {
@@ -83,9 +83,9 @@ func TestDecodePKCS12DataSha512Sha512(t *testing.T) {
 		t.Fatalf("Failed to encode password to BMP string: %v", err)
 	}
 
-	safeContents, updatedPassword, err := getSafeContents(pfxData, encodedPassword, 1, 10)
+	safeContents, updatedPassword, err := GetSafeContents(pfxData, encodedPassword, 1, 10)
 	if err != nil {
-		t.Fatalf("Failed to load PKCS#12 data with getSafeContents: %v", err)
+		t.Fatalf("Failed to load PKCS#12 data with GetSafeContents: %v", err)
 	}
 
 	if len(safeContents) == 0 {
@@ -111,9 +111,9 @@ func TestDecodePKCS12DataBadIterationCount(t *testing.T) {
 		t.Fatalf("Failed to encode password to BMP string: %v", err)
 	}
 
-	_, _, err = getSafeContents(pfxData, encodedPassword, 1, 10)
+	_, _, err = GetSafeContents(pfxData, encodedPassword, 1, 10)
 	if err == nil {
-		t.Fatal("Expected getSafeContents to fail with bad iteration count, but it succeeded")
+		t.Fatal("Expected GetSafeContents to fail with bad iteration count, but it succeeded")
 	}
 
 	if err != ErrIncorrectPassword {
@@ -134,9 +134,9 @@ func TestDecodePKCS12DataIncorrectSalt(t *testing.T) {
 		t.Fatalf("Failed to encode password to BMP string: %v", err)
 	}
 
-	_, _, err = getSafeContents(pfxData, encodedPassword, 1, 10)
+	_, _, err = GetSafeContents(pfxData, encodedPassword, 1, 10)
 	if err == nil {
-		t.Fatal("Expected getSafeContents to fail with incorrect salt, but it succeeded")
+		t.Fatal("Expected GetSafeContents to fail with incorrect salt, but it succeeded")
 	}
 
 	if err != ErrIncorrectPassword {
@@ -157,9 +157,9 @@ func TestDecodePKCS12DataMissingKeyLength(t *testing.T) {
 		t.Fatalf("Failed to encode password to BMP string: %v", err)
 	}
 
-	_, _, err = getSafeContents(pfxData, encodedPassword, 1, 10)
+	_, _, err = GetSafeContents(pfxData, encodedPassword, 1, 10)
 	if err == nil {
-		t.Fatal("Expected getSafeContents to fail with missing key length, but it succeeded")
+		t.Fatal("Expected GetSafeContents to fail with missing key length, but it succeeded")
 	}
 
 	if expected := "pkcs12: PBMAC1 requires explicit KeyLength parameter in PBKDF2 parameters"; err.Error() != expected {
