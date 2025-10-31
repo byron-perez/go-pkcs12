@@ -1,4 +1,4 @@
-module software.sslmate.com/src/go-pkcs12
+module module github.com/byron-perez/go-pkcs12
 
 go 1.19
 
